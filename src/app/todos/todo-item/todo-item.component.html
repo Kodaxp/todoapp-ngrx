@@ -19,6 +19,7 @@
     type="text"
     [formControl]="txtInput"
     #inputFisico
-    (blur)="terminarEdicion()">
+    (blur)="terminarEdicion()"
+    (keyup.enter)="terminarEdicion()">
 
 </li>
