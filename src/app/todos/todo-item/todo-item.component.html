@@ -1,11 +1,24 @@
-<li>
-
-  <!-- view, edit, completed  -->
+<li [class.completed]="todo.completado"
+    [class.editing]="editando">
 
   <div class="view">
-    <input class="toggle" type="checkbox">
-    <label>Comprar Unicornio</label>
+
+    <input
+      class="toggle"
+      type="checkbox"
+      [formControl]="chkCompletado">
+
+    <label (dblclick)="editar()" >{{todo.texto}}</label>
+
     <button class="destroy"></button>
+
   </div>
-  <input class="edit" value="Rule the web">
+
+  <input
+    class="edit"
+    type="text"
+    [formControl]="txtInput"
+    #inputFisico
+    (blur)="terminarEdicion()">
+
 </li>
