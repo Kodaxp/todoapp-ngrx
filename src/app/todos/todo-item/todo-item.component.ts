@@ -4,7 +4,6 @@ import {FormControl, Validators} from "@angular/forms";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../app.reducer";
 import * as actions from "../todo.actions";
-import {editar} from "../todo.actions";
 
 @Component({
   selector: 'app-todo-item',
@@ -48,12 +47,16 @@ export class TodoItemComponent implements OnInit {
     if (this.txtInput.invalid) return;
     if (this.txtInput.value === this.todo.texto) return;
 
-    this.store.dispatch(editar(
+    this.store.dispatch( actions.editar(
       {
         id: this.todo.id,
         texto: this.txtInput.value
       }
     ));
+  }
+
+  borrar() {
+    this.store.dispatch( actions.borrar({ id: this.todo.id }) );
   }
 
 }

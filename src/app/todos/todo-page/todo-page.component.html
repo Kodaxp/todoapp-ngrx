@@ -3,7 +3,13 @@
   <app-todo-add></app-todo-add>
 
   <section class="main">
-    <input id="toggle-all" class="toggle-all" type="checkbox">
+
+    <input
+      id="toggle-all"
+      class="toggle-all"
+      type="checkbox"
+      (click)="toggleAll()">
+
     <label for="toggle-all">Marcar todo como completado</label>
 
     <app-todo-list></app-todo-list>

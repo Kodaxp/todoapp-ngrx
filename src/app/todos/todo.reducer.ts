@@ -11,11 +11,16 @@ export const estadoInicial: TodoModel[] = [
 
 const _todoReducer = createReducer(
   estadoInicial,
+
   on(actions.crear, (state, {texto}) => [...state, new TodoModel(texto)]),
+
+  on(actions.borrar, (state, {id}) => state.filter(todo => todo.id !== id)),
+
+  on(actions.toggleAll, (state, {completado}) => state.map( todo => { return { ...todo, completado }} )),
 
   on(actions.toggle, (state, {id}) => {
 
-    return state.map( todo => {
+    return state.map(todo => {
 
       if (todo.id === id) {
         return {
@@ -30,9 +35,9 @@ const _todoReducer = createReducer(
 
   }),
 
-  on(actions.editar, (state, { id, texto }) => {
+  on(actions.editar, (state, {id, texto}) => {
 
-    return state.map( todo => {
+    return state.map(todo => {
 
       if (todo.id === id) {
         return {
@@ -44,8 +49,7 @@ const _todoReducer = createReducer(
       }
     });
 
-  })
-
+  }),
 );
 
 export function todoReducer(state, action) {
