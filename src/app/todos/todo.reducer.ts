@@ -14,6 +14,8 @@ const _todoReducer = createReducer(
 
   on(actions.crear, (state, {texto}) => [...state, new TodoModel(texto)]),
 
+  on(actions.limpiarTodos, state => state.filter( todo => !todo.completado)),
+
   on(actions.borrar, (state, {id}) => state.filter(todo => todo.id !== id)),
 
   on(actions.toggleAll, (state, {completado}) => state.map( todo => { return { ...todo, completado }} )),

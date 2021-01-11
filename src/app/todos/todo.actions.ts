@@ -19,3 +19,5 @@ export const borrar = createAction(
 export const toggleAll = createAction(
   '[Counter Component] Toggle All Todo',
   props<{ completado: boolean }>());
+
+export const limpiarTodos = createAction('[Counter Component] Limpiar Todos');
